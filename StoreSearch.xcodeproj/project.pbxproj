@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9F17B85D1D7D498B00B1F555 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F17B85C1D7D498B00B1F555 /* AppDelegate.swift */; };
-		9F17B85F1D7D498B00B1F555 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F17B85E1D7D498B00B1F555 /* ViewController.swift */; };
+		9F17B85F1D7D498B00B1F555 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F17B85E1D7D498B00B1F555 /* SearchViewController.swift */; };
 		9F17B8621D7D498B00B1F555 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F17B8601D7D498B00B1F555 /* Main.storyboard */; };
 		9F17B8641D7D498B00B1F555 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F17B8631D7D498B00B1F555 /* Assets.xcassets */; };
 		9F17B8671D7D498B00B1F555 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F17B8651D7D498B00B1F555 /* LaunchScreen.storyboard */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		9F17B8591D7D498B00B1F555 /* StoreSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F17B85C1D7D498B00B1F555 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9F17B85E1D7D498B00B1F555 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9F17B85E1D7D498B00B1F555 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9F17B8611D7D498B00B1F555 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F17B8631D7D498B00B1F555 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F17B8661D7D498B00B1F555 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				9F17B85C1D7D498B00B1F555 /* AppDelegate.swift */,
-				9F17B85E1D7D498B00B1F555 /* ViewController.swift */,
+				9F17B85E1D7D498B00B1F555 /* SearchViewController.swift */,
 				9F17B8601D7D498B00B1F555 /* Main.storyboard */,
 				9F17B8631D7D498B00B1F555 /* Assets.xcassets */,
 				9F17B8651D7D498B00B1F555 /* LaunchScreen.storyboard */,
@@ -96,6 +96,7 @@
 				TargetAttributes = {
 					9F17B8581D7D498B00B1F555 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = JP8T8ZDVB3;
 					};
 				};
 			};
@@ -135,7 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F17B85F1D7D498B00B1F555 /* ViewController.swift in Sources */,
+				9F17B85F1D7D498B00B1F555 /* SearchViewController.swift in Sources */,
 				9F17B85D1D7D498B00B1F555 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,10 +250,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = StoreSearch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = poncikapps.StoreSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -260,10 +264,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = StoreSearch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = poncikapps.StoreSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
