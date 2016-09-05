@@ -9,9 +9,12 @@
 import UIKit
 
 
-var searchResults = [String]()
+var searchResults = [SearchResult]()
+
 
 class SearchViewController: UIViewController , UITableViewDelegate{
+    var hasSearched = false
+    
     
     let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet weak var searchBar: UISearchBar!
@@ -19,10 +22,11 @@ class SearchViewController: UIViewController , UITableViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let cellNib = UINib(nibName: "SearchResultCell", bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: "SearchResultCell")
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view, typically from a nib.
         
         
         
@@ -39,53 +43,83 @@ class SearchViewController: UIViewController , UITableViewDelegate{
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        hasSearched = true
         for i in 0...2 {
-            searchResults.append(String(format: "Fake Result %d for '%@'", i,
-                searchBar.text!))
+            
+            
+            let searchResult = SearchResult()
+            searchResult.name = String(format: "Fake Result %d for", i)
+            searchResult.artistName = searchBar.text!
+            searchResults.append(searchResult)
         }
-        tableView.reloadData()
+        tableView.reloadData() // Reload Data for Table
     }
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition { return .TopAttached
     }
 }
 
+
+
 extension SearchViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return searchResults.count }
+        
+        if !hasSearched {
+            return 0
+        }
+        else if searchResults.count == 0 {
+            return 1
+        }
+        else {
+            return searchResults.count
+        }
+    }
     
     
     func tableView(tableView: UITableView,
                    cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "SearchResultCell"
-        var cell: UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
-        if cell == nil {
-            cell = UITableViewCell(style: .Default,
-                                   reuseIdentifier: cellIdentifier)
+        let cell = tableView.dequeueReusableCellWithIdentifier("SearchResultCell", forIndexPath: indexPath)
+//        if cell == nil {
+//            cell = UITableViewCell(style: .Subtitle,
+//                                   reuseIdentifier: cellIdentifier)
+//        }
+        
+        if searchResults.count == 0 {
+            
+            cell.textLabel!.text = "(Nothing found)"
+            cell.detailTextLabel!.text = ""
         }
-        cell.textLabel!.text = searchResults[indexPath.row]
+        else
+        {
+            let searchResult = searchResults[indexPath.row]
+            cell.textLabel!.text = searchResult.name
+            cell.detailTextLabel!.text = searchResult.artistName
+        }
+        
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
+        searchBar.resignFirstResponder()
         let row = indexPath.row
         print(searchResults[row])
     }
     
+    func tableView(tableView: UITableView,
+                   willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        if searchResults.count == 0 {
+            return nil
+        }
+        else {
+            return indexPath
+        }
+    }
+        
 }
 //extension SearchViewController: UITableViewDelegate { }
-
-
-
-
-
-
-
-
-
 
 
 
